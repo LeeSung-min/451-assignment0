@@ -13,8 +13,15 @@ args = parser.parse_args()
 
 url = args.url
 
+#fix for article blocks
+
+headers = {
+    "User-Agent" : "Mozilla/5.0",
+    "Referer": "https://www.google.com"
+}
+
 # fetch HTML & get text w Trafilatura
-r = requests.get(url, timeout= 20)
+r = requests.get(url, headers=headers, timeout= 20)
 r.raise_for_status()
 html = r.text
 
